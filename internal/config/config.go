@@ -7,7 +7,7 @@ import (
 
 type Config struct {
 	Server struct {
-		port string
+		Port string
 	}
 }
 
@@ -16,7 +16,7 @@ func NewConfig(filePath string) *Config {
 
 	if file, err := os.Open(filePath); err != nil {
 		panic(err)
-	} else if err = toml.NewDecoder(file).Decode(conf); file != nil {
+	} else if err = toml.NewDecoder(file).Decode(conf); err != nil {
 		panic(err)
 	} else {
 		return conf
