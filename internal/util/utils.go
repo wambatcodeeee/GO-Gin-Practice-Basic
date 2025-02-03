@@ -14,7 +14,7 @@ type CreateFoodResponse struct {
 
 type GetFoodResponse struct {
 	*ApiResponse `json:"apiResponse"`
-	*model.Food  `json:"food"`
+	Foods        []*model.Food `json:"result"`
 }
 
 type UpdateFoodResponse struct {

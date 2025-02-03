@@ -33,25 +33,29 @@ func newFoodRouter(router *Network, foodService *service.Food) *foodRouter {
 }
 
 func (f *foodRouter) create(c *gin.Context) {
+	f.foodService.Create(nil)
 	f.router.okResponse(c, &util.CreateFoodResponse{
 		ApiResponse: util.NewApiResponse("성공입니다.", 1),
 	})
 }
 
 func (f *foodRouter) get(c *gin.Context) {
+	f.foodService.Get()
 	f.router.okResponse(c, &util.GetFoodResponse{
 		ApiResponse: util.NewApiResponse("성공입니다.", 1),
-		Food:        nil,
+		Foods:       f.foodService.Get(),
 	})
 }
 
 func (f *foodRouter) update(c *gin.Context) {
+	f.foodService.Update(nil, nil)
 	f.router.okResponse(c, &util.UpdateFoodResponse{
 		ApiResponse: util.NewApiResponse("성공입니다.", 1),
 	})
 }
 
 func (f *foodRouter) delete(c *gin.Context) {
+	f.foodService.Delete(nil)
 	f.router.okResponse(c, &util.DeleteFoodResponse{
 		ApiResponse: util.NewApiResponse("성공입니다.", 1),
 	})
