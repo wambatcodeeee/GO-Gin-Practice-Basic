@@ -2,14 +2,16 @@ package network
 
 import (
 	"github.com/gin-gonic/gin"
+	"goweb1/internal/service"
 	"net/http"
 )
 
 type Network struct {
-	engine *gin.Engine
+	engine  *gin.Engine
+	service *service.Service
 }
 
-func SetupNetwork() *Network {
+func SetupNetwork(service *service.Service) *Network {
 	r := &Network{
 		engine: gin.Default(),
 	}
