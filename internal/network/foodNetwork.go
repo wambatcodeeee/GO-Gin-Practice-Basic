@@ -2,6 +2,7 @@ package network
 
 import (
 	"github.com/gin-gonic/gin"
+	"goweb1/internal/service"
 	"goweb1/internal/util"
 	"sync"
 )
@@ -12,12 +13,16 @@ var (
 )
 
 type foodRouter struct {
-	router *Network
+	router      *Network
+	foodService *service.Food
 }
 
-func newFoodRouter(router *Network) *foodRouter {
+func newFoodRouter(router *Network, foodService *service.Food) *foodRouter {
 	foodRouterInit.Do(func() {
-		foodRouterInstance = &foodRouter{router: router}
+		foodRouterInstance = &foodRouter{
+			router:      router,
+			foodService: foodService,
+		}
 		router.registerGET("/", foodRouterInstance.get)
 		router.registerPOST("/", foodRouterInstance.create)
 		router.registerUPDATE("/", foodRouterInstance.update)

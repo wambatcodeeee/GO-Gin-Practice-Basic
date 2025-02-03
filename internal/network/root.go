@@ -16,7 +16,7 @@ func SetupNetwork(service *service.Service) *Network {
 		engine: gin.Default(),
 	}
 
-	newFoodRouter(r)
+	newFoodRouter(r, service.Food)
 
 	return r
 }

@@ -1,7 +1,6 @@
 package repository
 
 import (
-	"goweb1/internal/model"
 	"sync"
 )
 
@@ -11,12 +10,14 @@ var (
 )
 
 type Repository struct {
-	FoodMap []*model.Food
+	Food *FoodRepository
 }
 
 func NewRepository() *Repository {
 	repositoryInit.Do(func() {
-		repositoryInstance = &Repository{}
+		repositoryInstance = &Repository{
+			Food: NewFoodRepository(),
+		}
 	})
 
 	return repositoryInstance

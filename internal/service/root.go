@@ -12,6 +12,7 @@ var (
 
 type Service struct {
 	repository *repository.Repository
+	Food       *Food
 }
 
 func NewService(rep *repository.Repository) *Service {
@@ -19,6 +20,7 @@ func NewService(rep *repository.Repository) *Service {
 		serviceInstance = &Service{
 			repository: rep,
 		}
+		serviceInstance.Food = newFoodService(rep.Food)
 	})
 
 	return serviceInstance
