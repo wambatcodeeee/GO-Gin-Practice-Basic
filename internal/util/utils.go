@@ -1,30 +1,8 @@
 package util
 
-import "goweb1/internal/model"
-
 type ApiResponse struct {
 	Result      int64  `json:"result"`
 	Description string `json:"description"`
-}
-
-type CreateFoodResponse struct {
-	*ApiResponse `json:"apiResponse"`
-	*model.Food  `json:"food"`
-}
-
-type GetFoodResponse struct {
-	*ApiResponse `json:"apiResponse"`
-	Foods        []*model.Food `json:"result"`
-}
-
-type UpdateFoodResponse struct {
-	*ApiResponse `json:"apiResponse"`
-	*model.Food  `json:"food"`
-}
-
-type DeleteFoodResponse struct {
-	*ApiResponse `json:"apiResponse"`
-	*model.Food  `json:"food"`
 }
 
 func NewApiResponse(description string, result int64) *ApiResponse {

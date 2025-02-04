@@ -2,6 +2,7 @@ package network
 
 import (
 	"github.com/gin-gonic/gin"
+	"goweb1/internal/model"
 	"goweb1/internal/service"
 	"goweb1/internal/util"
 	"sync"
@@ -34,14 +35,14 @@ func newFoodRouter(router *Network, foodService *service.Food) *foodRouter {
 
 func (f *foodRouter) create(c *gin.Context) {
 	f.foodService.Create(nil)
-	f.router.okResponse(c, &util.CreateFoodResponse{
+	f.router.okResponse(c, &model.CreateFoodResponse{
 		ApiResponse: util.NewApiResponse("성공입니다.", 1),
 	})
 }
 
 func (f *foodRouter) get(c *gin.Context) {
 	f.foodService.Get()
-	f.router.okResponse(c, &util.GetFoodResponse{
+	f.router.okResponse(c, &model.GetFoodResponse{
 		ApiResponse: util.NewApiResponse("성공입니다.", 1),
 		Foods:       f.foodService.Get(),
 	})
@@ -49,14 +50,14 @@ func (f *foodRouter) get(c *gin.Context) {
 
 func (f *foodRouter) update(c *gin.Context) {
 	f.foodService.Update(nil, nil)
-	f.router.okResponse(c, &util.UpdateFoodResponse{
+	f.router.okResponse(c, &model.UpdateFoodResponse{
 		ApiResponse: util.NewApiResponse("성공입니다.", 1),
 	})
 }
 
 func (f *foodRouter) delete(c *gin.Context) {
 	f.foodService.Delete(nil)
-	f.router.okResponse(c, &util.DeleteFoodResponse{
+	f.router.okResponse(c, &model.DeleteFoodResponse{
 		ApiResponse: util.NewApiResponse("성공입니다.", 1),
 	})
 }
