@@ -25,7 +25,7 @@ type GetFoodResponse struct {
 	Foods             []*Food `json:"result"`
 }
 
-type CreateRequest struct {
+type UpdateRequest struct {
 }
 
 type UpdateFoodResponse struct {
@@ -33,7 +33,7 @@ type UpdateFoodResponse struct {
 	*Food             `json:"food"`
 }
 
-type CreateRequest struct {
+type DeleteRequest struct {
 }
 
 type DeleteFoodResponse struct {
